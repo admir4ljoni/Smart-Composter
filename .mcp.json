@@ -1,0 +1,8 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "bash",
+            "args": ["-c", "cd web && ./vendor/bin/sail artisan boost:mcp"]
+        }
+    }
+}

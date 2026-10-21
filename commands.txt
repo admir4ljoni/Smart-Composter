@@ -1,0 +1,31 @@
+Useful commands (run from web/; sail = ./vendor/bin/sail)
+
+Containers
+  sail up -d                          start app + mysql
+  sail down                           stop
+  sail ps                             status
+  sail logs -f                        follow logs
+  sail shell                          shell inside app container
+
+Database
+  sail artisan migrate                run migrations
+  sail artisan migrate:fresh --seed   reset DB + seed
+  sail mysql                          MySQL CLI (host port 3307)
+
+Frontend (must run inside Sail: Wayfinder needs php)
+  sail npm run dev                    Vite dev server
+  sail npm run build                  production build (tests need this manifest)
+
+Checks (same ones the Stop hook runs)
+  sail artisan test --compact         all tests (PHPUnit)
+  sail artisan test --filter=Name     single test
+  npm run types:check                 tsc
+  npm run check                       lint + format check (Vite+)
+  npm run check:fix                   auto-fix lint/format
+  sail pint                           format PHP
+
+Misc
+  sail artisan route:list             list routes
+  sail artisan tinker                 REPL
+  sail composer require <pkg>         add PHP package
+  npm install <pkg>                   add JS package
