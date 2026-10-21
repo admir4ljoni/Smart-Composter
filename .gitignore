@@ -3,4 +3,4 @@
 !.env.example
 web/vendor/
 web/node_modules/
-.claude/settings.local.json
+.claude/
