@@ -56,6 +56,7 @@ Fake an ESP32: publish to `composter/esp32-AABBCCDDEEFF/telemetry` on the EMQX b
 ## Workflow rules
 
 - **After every change**: hooks in `.claude/settings.json` auto-format edited files (Pint / Prettier) and, on stop, run tests + `types` + `lint`; fix failures before handing back. If hooks aren't set up yet, run those checks manually.
+- Web work happens on `dev_web_fe` (frontend: `resources/js`, UI) or `dev_web_be` (backend: PHP, migrations, MQTT, tests), never directly on `main`. Switch to the matching branch before editing.
 - Finish one TASKS.md slice, stop for the user's review, commit only after approval.
 - Commit messages: `<type>(<slice>): <summary>` — e.g. `feat(ingest): save telemetry readings`, `test(stir): cover throttle`. Types: feat, fix, test, chore, docs, refactor.
 - **Never add Claude as co-author**: no `Co-Authored-By: Claude` line and no "Generated with Claude Code" footer in commits or PRs.
