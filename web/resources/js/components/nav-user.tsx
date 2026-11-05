@@ -14,11 +14,14 @@ import {
 import { UserInfo } from '@/components/user-info';
 import { UserMenuContent } from '@/components/user-menu-content';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useMockViewer } from '@/mock/composter';
 
 export function NavUser() {
     const { auth } = usePage().props;
     const { state } = useSidebar();
     const isMobile = useIsMobile();
+    // ponytail: mock viewer; slice 1.3 reads auth.user.school / is_superadmin.
+    const viewer = useMockViewer();
 
     if (!auth.user) {
         return null;
@@ -34,7 +37,10 @@ export function NavUser() {
                             className="group text-sidebar-accent-foreground data-[state=open]:bg-sidebar-accent"
                             data-test="sidebar-menu-button"
                         >
-                            <UserInfo user={auth.user} />
+                            <UserInfo
+                                user={auth.user}
+                                subtitle={viewer.school?.name ?? 'Superadmin'}
+                            />
                             <ChevronsUpDown className="ml-auto size-4" />
                         </SidebarMenuButton>
                     </DropdownMenuTrigger>
